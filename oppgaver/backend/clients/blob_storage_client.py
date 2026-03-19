@@ -62,7 +62,7 @@ class BlobStorageClient:
             # TODO  2.4 Lag et unikt navn for blobben som skal lagres i Azure Blob Storage
             # pattern: "covers/{user_id}/{playlist_id}.png"
             
-            blob_name = f""
+            blob_name = f"covers/{user_id}/{playlist_id}.png"
             
             # Upload to blob storage
             blob_client = self.blob_service_client.get_blob_client(

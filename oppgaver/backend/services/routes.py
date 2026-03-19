@@ -123,8 +123,8 @@ def generate_cover_image_for_playlist():
         return jsonify({"error": "Missing 'userId' parameter"}), 400
 
     try:
-        # TODO 2.4 Hent ut sangene fra spillelisten ved å kalle get_playlist_tracks(playlist_id)
-        tracks = list()  # Placeholder, erstatt med faktisk kall til get_playlist_tracks
+        # 2.4 Hent ut sangene fra spillelisten ved å kalle get_playlist_tracks(playlist_id)
+        tracks = get_playlist_tracks(playlist_id) # Placeholder, erstatt med faktisk kall til get_playlist_tracks
         track_names = [item['item']['name'] for item in tracks]
         
         # Use the CoverGenerator to create the cover image (returns temporary DALL-E URL)
