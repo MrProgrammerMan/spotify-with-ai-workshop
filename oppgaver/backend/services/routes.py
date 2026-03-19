@@ -364,7 +364,9 @@ def get_top_tracks():
     # TODO  2.8: Implementer denne metoden for å hente brukerens top-tracks fra Spotify Web API.
     # Hint: Se på hvordan get_top_artists() er implementert og gjør det samme for tracks.
     # Dokumentasjon: https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
-    return []
+    result = fetch_spotify_web_api('v1/me/top/tracks', 'GET')
+    print("Top artists response:", result)
+    return result['items']
 
 def get_playlist_tracks(playlist_id):
     """Get tracks in a playlist
