@@ -160,8 +160,8 @@ def generate_description_for_playlist():
     try:
         tracks = get_playlist_tracks(playlist_id)
         track_names = [item['item']['name'] for item in tracks]
-        # TODO 2.6 Kall metoden for å generere beskrivelse i DescriptionGenerator, hva skal du sende inn? Hva får du tilbake?
-        description = ""  # Placeholder, erstatt med faktisk kall til description_generator
+        # 2.6 Kall metoden for å generere beskrivelse i DescriptionGenerator, hva skal du sende inn? Hva får du tilbake?
+        description = description_generator.generate_description(track_names)  # Placeholder, erstatt med faktisk kall til description_generator
         
         if description:
                         # Get playlist name for table storage record
