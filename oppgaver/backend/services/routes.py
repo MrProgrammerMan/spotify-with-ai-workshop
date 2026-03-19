@@ -241,10 +241,18 @@ def set_cover_image_for_playlist():
 
         # PUT to Spotify API — body must be base64-encoded JPEG string
         token = spotify_token.get_token()
-        # TODO 2.9: Send en request til Spotify Web API for å sette spillelistens cover image.
+        # 2.9: Send en request til Spotify Web API for å sette spillelistens cover image.
         # Hint: Bruk requests.put(), riktig endpoint er v1/playlists/{playlist_id}/images
         # Body skal være jpeg_b64, og Content-Type headeren skal være 'image/jpeg'
-        return jsonify({"error": "TODO 2.9: Ikke implementert ennå"}), 501
+        res = requests.put(
+            f'https://api.spotify.com/v1/playlists/{playlist_id}/images',
+            data = jpeg_b64,
+            headers = {
+                'Content-Type': 'image/jpeg',
+                'Authorization': f'Bearer {token}'
+            }
+        )
+        return jsonify(res.body)
 
     except Exception as e:
         print(f"ERROR in set_cover_image_for_playlist: {str(e)}")
