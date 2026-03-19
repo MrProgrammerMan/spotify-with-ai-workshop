@@ -45,7 +45,7 @@ function App() {
 
         <div className="content">
           <Routes>
-            {/* TODO  1.2: Add route for PlaylistPage*/}
+            <Route path="/" element={<PlaylistsPage />} />
             <Route path="/cover/:playlistId" element={<GeneratorPage />} />
             <Route path="/gallery" element={<CoverImageListPage />} />
             <Route path="/top" element={<TopPage />} />

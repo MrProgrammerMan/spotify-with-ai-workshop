@@ -315,15 +315,15 @@ def fetch_spotify_web_api(endpoint, method, body=None):
     if not spotify_token.is_authorized():
         raise Exception("User not authorized. Please visit /login first.")
     token = spotify_token.get_token()
-    # #TODO  1.1: Vi må sende en gyldig request til riktig lokasjon.
+    # 1.1: Vi må sende en gyldig request til riktig lokasjon.
     # Vi bruker requests biblioteket for å sende en HTTP request til Spotify Web API. 
     # en gyldig request består av riktig HTTP-metode (GET, POST, etc.), riktig endpoint URL, og nødvendige access token i headeren for autentisering.
     # Hvis det er en POST eller PUT request, må vi også sende med body som JSON.
     res = requests.request(
-        "", #TODO Fyll inn riktig HTTP-metode
-        f'https://api.spotify.com/{""}', #TODO f-strengen mangler endpoint
-        headers={'Authorization': f'Bearer {""}'}, #TODO f-strengen mangler token
-        json="" #TODO Legg til Body i tilfelle det er POST eller PUT
+        method, # Fyll inn riktig HTTP-metode
+        f'https://api.spotify.com/{endpoint}', # f-strengen mangler endpoint
+        headers={'Authorization': f'Bearer {token}'}, # f-strengen mangler token
+        json=body # Legg til Body i tilfelle det er POST eller PUT
     )
     
     if res.status_code != 200:
@@ -336,10 +336,10 @@ def fetch_spotify_web_api(endpoint, method, body=None):
 def get_playlists():
     """Get user's playlists"""
     try:
-        # #TODO  1.1: Her mangler vi gyldig endepunkt, finn ut hvilket endepunkt som blir korrekt ved å lese på spotify sin dokumentasjon
+        # 1.1: Her mangler vi gyldig endepunkt, finn ut hvilket endepunkt som blir korrekt ved å lese på spotify sin dokumentasjon
         # dokumentasjon for metoden vi skal bruke finnes her; https://developer.spotify.com/documentation/web-api/reference/get-a-list-of-current-users-playlists
         return fetch_spotify_web_api(
-            '', # #TODO Fyll inn riktig endpoint for å hente brukerens spillelister
+            'v1/me/playlists', # Fyll inn riktig endpoint for å hente brukerens spillelister
             'GET'
         )['items']
     except Exception as e:
@@ -378,7 +378,7 @@ def get_playlist_tracks(playlist_id):
     try:
         return fetch_spotify_web_api(
             f'v1/playlists/{playlist_id}/items',
-            ''
+            'GET'
         )['items']
     except Exception as e:
         print(f"ERROR in get_playlist_tracks: {str(e)}")
