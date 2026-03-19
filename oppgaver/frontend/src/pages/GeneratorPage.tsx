@@ -119,7 +119,13 @@ export const GeneratorPage = () => {
         {tracks.length > 10 && <p>...and {tracks.length - 10} more tracks</p>}
       </div>
 
-      {/* TODO  1.5 */}
+      <button
+        onClick={generateCover}
+        disabled={generating || tracks.length == 0}
+        className={styles.generateButton}
+      >
+        {generating ? "Generating..." : "Generate AI Cover Image"}
+      </button>
 
 
       <button
