@@ -21,6 +21,17 @@ class BlobStorageClient:
             print(f"Container not found, creating container: {self.container_name}")
             from azure.storage.blob import PublicAccess
             self.container_client.create_container(public_access=PublicAccess.Blob)
+    
+    def download_image(self, blob_url: str) -> BytesIO:
+        """
+        Downloads an image from Azure Blob Storage given its URL
+        
+        Args:
+            blob_url: The public URL of the blob
+        Returns:
+        """
+        self.container_client
+        return
 
     def upload_image_from_url(self, image_url: str, user_id: str, playlist_id: str) -> str:
         """
@@ -48,7 +59,7 @@ class BlobStorageClient:
                 response.raise_for_status()
                 image_data = BytesIO(response.content)
             
-            # TODO: 2.4 Lag et unikt navn for blobben som skal lagres i Azure Blob Storage
+            # TODO  2.4 Lag et unikt navn for blobben som skal lagres i Azure Blob Storage
             # pattern: "covers/{user_id}/{playlist_id}.png"
             
             blob_name = f""
@@ -98,7 +109,7 @@ class BlobStorageClient:
         """
         try:
             prefix = f"covers/{user_id}/"
-            # TODO: 2.5 Hent ut alle blobs for denne brukeren ved å bruke list_blobs med name_starts_with=prefix
+            # TODO 2.5 Hent ut alle blobs for denne brukeren ved å bruke list_blobs med name_starts_with=prefix
             blob_list = []  # Placeholder, erstatt med faktisk kall til list_blobs
             
             cover_images = []
