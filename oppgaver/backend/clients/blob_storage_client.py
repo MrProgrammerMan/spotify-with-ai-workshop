@@ -110,7 +110,7 @@ class BlobStorageClient:
         try:
             prefix = f"covers/{user_id}/"
             # TODO 2.5 Hent ut alle blobs for denne brukeren ved å bruke list_blobs med name_starts_with=prefix
-            blob_list = []  # Placeholder, erstatt med faktisk kall til list_blobs
+            blob_list = self.container_client.list_blobs(name_starts_with=prefix)
             
             cover_images = []
             for blob in blob_list:
