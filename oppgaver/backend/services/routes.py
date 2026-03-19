@@ -174,7 +174,8 @@ def generate_description_for_playlist():
             
             # Save description record to table storage
             try:
-                # TODO 2.7 Lagre den genererte beskrivelsen i table storage ved å kalle save_description_record, hva skal du sende inn her?
+                # 2.7 Lagre den genererte beskrivelsen i table storage ved å kalle save_description_record, hva skal du sende inn her?
+                table_storage.save_description_record(playlist_id, playlist_name, description, description_generator.generate_prompt(track_names))
                 print(f"Saved description record for playlist: {playlist_id}")
             except Exception as e:
                 print(f"WARNING: Could not save to table storage: {str(e)}")

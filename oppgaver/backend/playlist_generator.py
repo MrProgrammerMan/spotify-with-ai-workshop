@@ -39,3 +39,6 @@ class DescriptionGenerator:
         prompt = description_prompt(track_names)
         description = self.description_generation_client.generate_description(prompt)
         return description
+    
+    def generate_prompt(self, track_names: list[str]):
+        return description_prompt(track_names)
