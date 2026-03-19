@@ -9,6 +9,7 @@
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
           python313
+          nodejs_24
         ];
       };
     };
